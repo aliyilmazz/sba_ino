@@ -254,7 +254,7 @@ String SubmitHTTPRequest()
   if (post_interval_counter < post_interval) // Get Request
   {
     Serial.println("sending get request! counter: " + String(post_interval_counter) + ", interval: " + String(post_interval));
-    Serial1.println("AT+HTTPPARA=\"URL\",\"subilesenanaliz.xyz/tank/" + IMEI + "\""); // Set URL 
+    Serial1.println("AT+HTTPPARA=\"URL\",\"api.bttgsutakip.com:6792/tank/" + IMEI + "\""); // Set URL 
     delay(1000); 
     ShowSerialData();
     Serial1.println("AT+HTTPACTION=0"); // Submit GET request (Action=0)  
@@ -274,10 +274,9 @@ String SubmitHTTPRequest()
     Serial1.println("AT+HTTPPARA=\"CONTENT\",\"application/json\""); // Set header for POST request 
     delay(1000);
     ShowSerialData();
-    Serial1.println("AT+HTTPPARA=\"URL\",\"subilesenanaliz.xyz/tank\""); // Set URL
+    Serial1.println("AT+HTTPPARA=\"URL\",\"api.bttgsutakip.com:6792/tank\""); // Set URL
     delay(1000);
     ShowSerialData();
-    readValues();
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject& root = jsonBuffer.createObject();
     root["IMEI"] = IMEI;
